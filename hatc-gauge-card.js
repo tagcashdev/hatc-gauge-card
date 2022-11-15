@@ -76,12 +76,12 @@ class HatcGaugeCard extends LitElement {
             // Gauge
             var g = {}; var hGauge = (typeof this.config.gauge !== 'undefined') ? this.config.gauge : '';
             if(isObject(hGauge)){
-                g['text-color'] = (typeof hGauge['text-color'] !== 'undefined') ? hGauge['text-color'] : '';
-                g['font-size'] = (typeof hGauge['font-size'] !== 'undefined') ? hGauge['font-size'] : '0.45em';
+                g['g_textcolor'] = (typeof hGauge['text-color'] !== 'undefined') ? hGauge['text-color'] : '';
+                g['g_fontsize'] = (typeof hGauge['font-size'] !== 'undefined') ? hGauge['font-size'] : '0.45em';
                 //g['icon'] = (typeof hGauge['icon'] !== 'undefined') ? hGauge['icon'] : '';
-                g['friendly_name'] = (typeof hGauge['friendly_name'] !== 'undefined') ? hGauge['friendly_name'] : heTitle;
-                g['unit_of_measurement'] = (typeof hGauge['unit_of_measurement'] !== 'undefined') ? hGauge['unit_of_measurement'] : heUnitOfMeasurement;
-                g['max_value'] = (typeof hGauge['max_value'] !== 'undefined') ? hGauge['max_value'] : '100';
+                g['g_friendlyname'] = (typeof hGauge['friendly_name'] !== 'undefined') ? hGauge['friendly_name'] : heTitle;
+                g['g_unitofmeasurement'] = (typeof hGauge['unit_of_measurement'] !== 'undefined') ? hGauge['unit_of_measurement'] : heUnitOfMeasurement;
+                g['g_maxvalue'] = (typeof hGauge['max_value'] !== 'undefined') ? hGauge['max_value'] : '100';
             }
             this.config.gauge.severity.map(s => {
                 if(typeof s.form === 'undefined' && typeof s.to === 'undefined' && typeof s.color !== 'undefined'){
@@ -91,17 +91,17 @@ class HatcGaugeCard extends LitElement {
                     textFillColor = s.color;
                 }
             });
-            if(g['text-color'] == "severity" || g['text-color'] == ""){
-                g['text-color'] = textFillColor;
+            if(g['g_textcolor'] == "severity" || g['text-color'] == ""){
+                g['g_textcolor'] = textFillColor;
             }
 
-            var heTextFillColor = g['text-color'];
+            var heTextFillColor = g['g_textcolor'];
             var hePathStrokeColor = textFillColor;
 
             var hE = {
-                "heTitle": (g.friendly_name !== '' && g.friendly_name !== false && g.friendly_name !== 'hide') ? g.friendly_name : '',
+                "heTitle": (g.g_friendlyname !== '' && g.g_friendlyname !== false && g.g_friendlyname !== 'hide') ? g.g_friendlyname : '',
                 "heState": heState,
-                "heUnitOfMeasurement": (g.unit_of_measurement !== '' && g.unit_of_measurement !== false && g.unit_of_measurement !== 'hide') ? g.unit_of_measurement : '',
+                "heUnitOfMeasurement": (g.g_unitofmeasurement !== '' && g.g_unitofmeasurement !== false && g.g_unitofmeasurement !== 'hide') ? g.g_unitofmeasurement : '',
                 "heIcon": heIcon,
                 "hePathStrokeColor" : hePathStrokeColor,
                 "heTextFillColor" : heTextFillColor,
@@ -115,9 +115,9 @@ class HatcGaugeCard extends LitElement {
                     <path style="fill: none; stroke: #343434; stroke-width: 2.0;"
                           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                     <path style="stroke: ${hE.hePathStrokeColor}; fill: none; stroke-width: 2.8; stroke-linecap: round; animation: progress 1s ease-out forwards;"
-                          stroke-dasharray="${calcPercent(hE.heState, g.max_value)}, 100"
+                          stroke-dasharray="${calcPercent(hE.heState, g.g_maxvalue)}, 100"
                           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <text x="18" y="20.35" style="fill: ${hE.heTextFillColor}; font-family: sans-serif; font-size: ${g['font-size']}; text-anchor: middle;">
+                    <text x="18" y="20.35" style="fill: ${hE.heTextFillColor}; font-family: sans-serif; font-size: ${g.g_fontsize}; text-anchor: middle;">
                         ${hE.heState}${hE.heUnitOfMeasurement}
                     </text>
                     <text x="18" y="24" style="fill: var(--secondary-text-color); font-family: sans-serif; font-size: 0.10em; text-anchor: middle; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
