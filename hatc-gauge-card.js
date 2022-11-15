@@ -117,10 +117,10 @@ class HatcGaugeCard extends LitElement {
                     <path style="stroke: ${hE.hePathStrokeColor}; fill: none; stroke-width: 2.8; stroke-linecap: round; animation: progress 1s ease-out forwards;"
                           stroke-dasharray="${calcPercent(hE.heState, g.maxvalue)}, 100"
                           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <text x="18" y="20.35" style="fill: ${hE.heTextFillColor}; font-family: sans-serif; font-size: ${g.fontsize}; text-anchor: middle;">
+                    <text x="18" y="20.35" style="fill: ${hE.heTextFillColor}; font-family: sans-serif; text-anchor: middle;" font-size="${g.fontsize}"">
                         ${hE.heState}${hE.heUnitOfMeasurement}
                     </text>
-                    <text x="18" y="24" style="fill: var(--secondary-text-color); font-family: sans-serif; font-size: 0.10em; text-anchor: middle; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                    <text x="18" y="24" font-size="0.25em" style="fill: var(--secondary-text-color); font-family: sans-serif; text-anchor: middle; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
                         ${hE.heTitle}
                     </text>
                 </svg>
