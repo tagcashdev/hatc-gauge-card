@@ -1,6 +1,3 @@
-import handleClick  from "./hass/handleClick.js";
-import {html, css, LitElement} from './core/lit-core.min.js';
-
 function isObject(val) {
     return val instanceof Object; 
 }
@@ -91,7 +88,7 @@ class HatcGaugeCard extends LitElement {
                     textFillColor = s.color;
                 }
             });
-            if(g['g_textcolor'] == "severity" || g['text-color'] == ""){
+            if(g['g_textcolor'] == "severity" || g['g_textcolor'] == ""){
                 g['g_textcolor'] = textFillColor;
             }
 
