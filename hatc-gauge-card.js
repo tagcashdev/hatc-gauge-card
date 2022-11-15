@@ -77,6 +77,7 @@ class HatcGaugeCard extends LitElement {
             var g = {}; var hGauge = (typeof this.config.gauge !== 'undefined') ? this.config.gauge : '';
             if(isObject(hGauge)){
                 g['textfillcolor'] = (typeof hGauge['text-color'] !== 'undefined') ? hGauge['text-color'] : '';
+                g['fontsize'] = (typeof hGauge['font-size'] !== 'undefined') ? hGauge['font-size'] : '0.45em';
                 //g['icon'] = (typeof hGauge['icon'] !== 'undefined') ? hGauge['icon'] : '';
                 g['friendlyname'] = (typeof hGauge['friendly_name'] !== 'undefined') ? hGauge['friendly_name'] : heTitle;
                 g['unitofmeasurement'] = (typeof hGauge['unit_of_measurement'] !== 'undefined') ? hGauge['unit_of_measurement'] : heUnitOfMeasurement;
@@ -116,7 +117,7 @@ class HatcGaugeCard extends LitElement {
                     <path style="stroke: ${hE.hePathStrokeColor}; fill: none; stroke-width: 2.8; stroke-linecap: round; animation: progress 1s ease-out forwards;"
                           stroke-dasharray="${calcPercent(hE.heState, g.maxvalue)}, 100"
                           d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <text x="18" y="20.35" style="fill: ${hE.heTextFillColor}; font-family: sans-serif; font-size: 0.45em; text-anchor: middle;">
+                    <text x="18" y="20.35" style="fill: ${hE.heTextFillColor}; font-family: sans-serif; font-size: ${g.fontsize}; text-anchor: middle;">
                         ${hE.heState}${hE.heUnitOfMeasurement}
                     </text>
                     <text x="18" y="24" style="fill: var(--secondary-text-color); font-family: sans-serif; font-size: 0.10em; text-anchor: middle; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
