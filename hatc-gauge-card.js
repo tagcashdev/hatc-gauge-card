@@ -1,5 +1,7 @@
 
-import {html, css, LitElement} from "lit";
+var LitElement = LitElement || Object.getPrototypeOf(customElements.get("ha-panel-lovelace"));
+var html = LitElement.prototype.html;
+var css = LitElement.prototype.css;
 
 function isObject(val) {
     return val instanceof Object; 
