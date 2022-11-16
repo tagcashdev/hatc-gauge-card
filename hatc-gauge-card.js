@@ -11,6 +11,45 @@ function calcPercent(sValue, sMax){
     return sValue / sMax * 100;
 }
 
+function handleClick(node, hass, config, entityId){
+    let e;
+    if (!config){
+        console.log("not config!");
+        return;
+    }
+
+    // eslint-disable-next-line default-case
+    switch (config.action) {
+        case 'more-info': {
+            e = new Event('hass-more-info', { composed: true });
+            e.detail = {
+            entityId: config.entity || entityId,
+            };
+            node.dispatchEvent(e);
+            break;
+        }
+        case 'navigate': {
+            if (!config.navigation_path) return;
+            window.history.pushState(null, '', config.navigation_path);
+            e = new Event('location-changed', { composed: true });
+            e.detail = { replace: false };
+            window.dispatchEvent(e);
+            break;
+        }
+        case 'call-service': {
+            if (!config.service) return;
+            const [domain, service] = config.service.split('.', 2);
+            const serviceData = { ...config.service_data };
+            hass.callService(domain, service, serviceData);
+            break;
+        }
+        case 'url': {
+            if (!config.url) return;
+            window.location.href = config.url;
+        }
+    }
+}
+
 class HatcGaugeCard extends LitElement {
     static get properties() {
         return {
@@ -130,7 +169,7 @@ class HatcGaugeCard extends LitElement {
 
             return html`
                 <ha-card class="HatcGaugeCard">
-                    <div class="box">
+                    <div class="box" @click=${e => this._handlePopup(e)}>
                         <div class="header" style="${h['text-align']}">
                             ${hIconHTML}
                             ${hNameHTML}
@@ -175,6 +214,7 @@ class HatcGaugeCard extends LitElement {
             return;
         }
         e.stopPropagation();
+        handleClick(this, this.hass, this.config.tap_action, false);
     }
 
     _handleEntities(e, entity) {
@@ -190,6 +230,7 @@ class HatcGaugeCard extends LitElement {
         }
         
         e.stopPropagation();
+        handleClick(this, this.hass, this.config.tap_action, false);
     }
 
     static get styles() {
