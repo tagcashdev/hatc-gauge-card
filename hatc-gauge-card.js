@@ -12,14 +12,8 @@ function calcPercent(sValue, sMax){
 }
 
 function handleClick(node, hass, config, entityId){
-    console.log('handleClick called');
-    console.log('node', node);
-    console.log('hass', hass);
-    console.log('config', config);
-    console.log('entityId', entityId);
     let e;
     if (!config){
-        console.log("not config!");
         return;
     }
 
@@ -28,7 +22,7 @@ function handleClick(node, hass, config, entityId){
         case 'more-info': {
             e = new Event('hass-more-info', { composed: true });
             e.detail = {
-            entityId: config.entity || entityId,
+                entityId: config.entity || entityId,
             };
             node.dispatchEvent(e);
             break;
@@ -64,7 +58,7 @@ class HatcGaugeCard extends LitElement {
     }
 
     static getConfigElement() {
-        console.log("getConfigElement");
+        console.log('getConfigElement');
     }
 
     static getStubConfig() {
@@ -215,12 +209,16 @@ class HatcGaugeCard extends LitElement {
     }
 
     _handlePopup(e) {
-        console.log('_handlePopup called');
-        if (!this.config.tap_action) {
-            return;
+        var tap_action = this.config.tap_action || {};
+        if (this.config.entity) {
+            if (isObject(tap_action)) {
+                tap_action = {
+                    action: "more-info"  
+                }
+            }
+            e.stopPropagation();
+            handleClick(this, this.hass, tap_action, this.config.entity);
         }
-        e.stopPropagation();
-        handleClick(this, this.hass, this.config.tap_action, false);
     }
 
     _handleEntities(e, entity) {
