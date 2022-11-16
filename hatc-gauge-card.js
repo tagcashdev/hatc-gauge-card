@@ -13,6 +13,10 @@ function calcPercent(sValue, sMax){
 
 function handleClick(node, hass, config, entityId){
     console.log('handleClick called');
+    console.log('node', node);
+    console.log('hass', hass);
+    console.log('config', config);
+    console.log('entityId', entityId);
     let e;
     if (!config){
         console.log("not config!");
