@@ -1,5 +1,5 @@
 
-import {html, css, LitElement} from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
+import {html, css, LitElement} from "lit";
 
 function isObject(val) {
     return val instanceof Object; 
