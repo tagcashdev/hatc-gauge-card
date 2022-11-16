@@ -12,6 +12,7 @@ function calcPercent(sValue, sMax){
 }
 
 function handleClick(node, hass, config, entityId){
+    console.log('handleClick called');
     let e;
     if (!config){
         console.log("not config!");
@@ -210,6 +211,7 @@ class HatcGaugeCard extends LitElement {
     }
 
     _handlePopup(e) {
+        console.log('_handlePopup called');
         if (!this.config.tap_action) {
             return;
         }
