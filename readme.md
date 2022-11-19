@@ -2,15 +2,15 @@
 
 ## Description
 
-....
-
-### Fonctionnalité
-- 1
-- 2
+Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élément dans une carte button-card par example.
 
 ### Fonctionnalité futures
-- 1
-- 2
+- Choix des positions de l'Icon, État, Unité à l'intérieur de la jauge
+- ...
+
+### Fonctionnalité futures (peut-être)
+- Posibilité de régler la luminosité, couleur d'une lumière grace à la gauge
+- ...
 
 ## Options
 | Name | Type | Requis | Default | Description | Options |
