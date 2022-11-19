@@ -165,16 +165,22 @@ class HatcGaugeCard extends LitElement {
                 g['maxvalue'] = (typeof hGauge['max_value'] !== 'undefined') ? hGauge['max_value'] : '100';
 
                 g['state'] = (typeof hGauge['state'] !== 'undefined') ? hGauge['state'] : true;
-                g['icon'] = (typeof hGauge['icon'] !== 'undefined') ? hGauge['icon'] : heIcon;
+                g['icon'] = (typeof hGauge['icon'] !== 'undefined') ? hGauge['icon'] : (heIcon !== '' && heIcon !== false && heIcon !== 'hide') ? heIcon : icon;
 
                 // Severity config
                 if(typeof this.config.gauge.severity !== 'undefined'){
                     this.config.gauge.severity.map(s => {
                         if(typeof s.form === 'undefined' && typeof s.to === 'undefined' && typeof s.color !== 'undefined'){
                             textstateColor = s.color;
+                            if(typeof s.icon !== 'undefined'){
+                                g.icon = s.icon;
+                            }
                         }
                         if(parseFloat(heState) >= s.from && parseFloat(heState) <= s.to){
                             textstateColor = s.color;
+                            if(typeof s.icon !== 'undefined'){
+                                g.icon = s.icon;
+                            }
                         }
                     });
                     if(g['textstatecolor'] == "severity" || g['textstatecolor'] == ""){
@@ -185,6 +191,9 @@ class HatcGaugeCard extends LitElement {
                     }
                     if(h.color == "severity"){
                         h.color = textstateColor;
+                    }
+                    if(h.icon == "severity"){
+                        heIcon = g.icon;
                     }
                 }else{
                     textstateColor= 'white';
@@ -225,13 +234,8 @@ class HatcGaugeCard extends LitElement {
             var hIconHTML = (hE.heIcon !== '' && hE.heIcon !== false && hE.heIcon !== 'hide') ? html`<ha-icon style="${h.fontsize} color:${h.iconcolor};" .icon="${hE.heIcon}"></ha-icon>` : '';
             var hNameHTML = (h.name !== '' && h.name !== false && h.name !== 'hide') ? html`<div style="${h.fontsize} color:${h.color};" class="name">${h.name}</div>` : '';
             var gStateHTML =  (g.state !== '' && g.state !== false && g.state !== 'hide') ? html`${hE.heState}${hE.heUnitOfMeasurement}` : '';
+            console.log(g.icon);
             var gIconHTML = (g.icon !== '' && g.icon !== false && g.icon !== 'hide') ? html`<ha-icon style="--mdc-icon-size: ${g.iconsize}; color:${g.iconcolor};" .icon="${g.icon}"></ha-icon>` : '';
-            
-            var gradient = [
-                { offset: "0%", color: "red"},
-                { offset: "50%", color: "yellow"},
-                { offset: "100%", color: "blue"},
-            ];
 
             var percent = calcPercent(hE.heState, g.maxvalue);
 
