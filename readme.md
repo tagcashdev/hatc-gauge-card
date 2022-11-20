@@ -3,7 +3,9 @@
 ## Installation
 
 Se rendre sur HACS, puis dépôt personnalisé ajouter https://github.com/tagcashdev/hatc-gauge-card au Dépot et choisir catégorie Lovelace
+
 ![Dépots personnalisé](./img/installation.png)
+
 Puis appuyer sur le bouton (+ Explorer et télécharger des dépôts), chercher HATC et installer.
 Enjoy !
 
@@ -22,7 +24,7 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 
 ***
 Merci de soutenir mon travail en téléchargeant cette carte personnalisé !
-Si vous aimez mon travail likez, abbonnez-vous au repo :) Et si vous souhaitez contribuer aux nombreux café que je consomme vous pouvez m'offrir 1 ct ou plus grâce à ce lien : https://www.paypal.me/tagcash
+Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez contribuer aux nombreux café que je consomme vous pouvez m'offrir 1 ct ou plus grâce à ce lien : https://www.paypal.me/tagcash
 ***
 
 #### Options
