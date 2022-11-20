@@ -1,5 +1,12 @@
 # HATC-GAUGE-CARD
 
+## Installation
+
+Se rendre sur HACS, puis dépôt personnalisé ajouter https://github.com/tagcashdev/hatc-gauge-card au Dépot et choisir catégorie Lovelace
+![Dépots personnalisé](./img/installation.png)
+Puis appuyer sur le bouton (+ Explorer et télécharger des dépôts), chercher HATC et installer.
+Enjoy !
+
 ## Description
 
 Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élément dans une carte button-card par example.
@@ -11,8 +18,14 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 ### Fonctionnalité futures (peut-être)
 - Posibilité de régler la luminosité, couleur d'une lumière grace à la gauge
 - ...
+- Contactez-moi pour proposer des idées
 
-## Options
+***
+Merci de soutenir mon travail en téléchargeant cette carte personnalisé !
+Si vous aimez mon travail likez, abbonnez-vous au repo :) Et si vous souhaitez contribuer aux nombreux café que je consomme vous pouvez m'offrir 1 ct ou plus grâce à ce lien : https://www.paypal.me/tagcash
+***
+
+#### Options
 | Name | Type | Requis | Default | Description | Options |
 | ---- | ---- | ------ | ------- | ----------- | ------- |
 | type | string | **Obligatoire** | - | `custom:hatc-gauge-card` | - |
@@ -21,7 +34,7 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 | [title](#title-options) | string/object | Optionnel | entity.attribute.friendly_name | Permet de changer le titre de la carte, [voir exemple](#titre-simple) | false, '', hide, string, object[voir configuration](#title-options) |
 | [gauge](#gauge-options) | object | Optionnel | - | Configuration de la Jauge | - |
 
-## Title Options
+#### Title Options
 | Name | Type | Requis | Default | Description | Options |
 | ---- | ---- | ------ | ------- | ----------- | ------- |
 | name | string | Optionnel | - | Titre de la carte | - |
@@ -31,7 +44,7 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 | icon | string | Optionnel | entity.attributes.icon; | Icon du titre de la carte, à noter que severity permet de changer l'icon automatiquement en fonction des icons choisi dans l'option severity | false, mdi:xxx, severity |
 | icon-color | string | Optionnel | white | Couleur de l'icon du titre de la carte, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
 
-## Gauge Options
+#### Gauge Options
 | Name | Type | Requis | Default | Description | Options |
 | ---- | ---- | ------ | ------- | ----------- | ------- |
 | max_value | string/integer | Optionnel | 100 | Permet de modifier la valeur maximum de la jauge et adapter automatiquement la position de la jauge | - |
@@ -44,7 +57,7 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 | icon-size | string | Optionnel | 22px | Taille du texte de l'icon de la jauge | px, em |
 | [severity](#severity-options) | object | Optionnel | - | Configuration severity | - |
 
-## Severity Options
+#### Severity Options
 | Name | Type | Requis | Default | Description | Options |
 | ---- | ---- | ------ | ------- | ----------- | ------- |
 | color | string | Optionnel | - | couleur à utiliser | red, #ff0000, rgb(255,0,0), var(--color) |
