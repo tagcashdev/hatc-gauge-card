@@ -16,6 +16,15 @@ function calcPercent(sValue, sMax){
     return result;
 }
 
+function calcStatePercent(sValue, sMax){
+    if(isNaN(sValue)){
+        return '';
+    }
+    var result = sValue / sMax * 100;
+    result = Math.trunc(result);
+    return result;
+}
+
 function makeid(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -149,8 +158,8 @@ class HatcGaugeCard extends LitElement {
             }
 
             var heTitle = showTitleEntity ? hassEntity.attributes.friendly_name : '';
-            var heUnitOfMeasurement = showUnitOfMeasurmentEntity ? hassEntity.attributes.unit_of_measurement : '';
-            var heState = showStateEntity ? hassEntity.entity_id.startsWith('light') ? calcPercent(hassEntity.attributes.brightness, 254) : hassEntity.state : '';
+            var heUnitOfMeasurement = showUnitOfMeasurmentEntity ? hassEntity.entity_id.startsWith('light') && (typeof hassEntity.attributes.brightness == 'number') ? '%' : hassEntity.attributes.unit_of_measurement : '';
+            var heState = showStateEntity ? hassEntity.entity_id.startsWith('light') ? calcStatePercent(hassEntity.attributes.brightness, 254) : hassEntity.state : '';
             var heIcon = showIconEntity ? (typeof h.icon !== 'undefined' ? h.icon : icon) : '';
 
             // Gauge config
