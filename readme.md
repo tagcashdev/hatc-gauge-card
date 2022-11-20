@@ -60,6 +60,7 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 type: custom:hatc-gauge-card
 entity: sensor.temperature_moyenne_hall_d_entree
 ```
+![Minimum](./img/minimum.png)
 
 #### Default
 
@@ -101,6 +102,7 @@ gauge:
 ```yaml
 title: Titre de la carte
 ```
+![Titre Simple](./img/titre-simple.png)
 
 #### Titre options
 
@@ -113,7 +115,7 @@ title:
   icon-color: severity
   icon: severity
 ```
-
+![Titre options](./img/titre-options.png)
 
 #### Gauge options
 
@@ -145,8 +147,9 @@ gauge:
       from: 28
       to: 50
 ```
+![Gauge Options](./img/gauge-options.png)
 
-#### Gauge options
+#### Severity options
 
 ```yaml
 gauge:
