@@ -42,11 +42,17 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 | icon | string | Optionnel | entity.attributes.icon; | Icon du de la jauge, à noter que severity permet de changer l'icon automatiquement en fonction des icons choisi dans l'option severity | false, mdi:xxx, severity |
 | icon-color | string | Optionnel | white | Couleur de l'icon de la jauge, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
 | icon-size | string | Optionnel | 22px | Taille du texte de l'icon de la jauge | px, em |
+| [severity](#severity-options) | object | Optionnel | - | Configuration severity | - |
 
-
+## Severity Options
+| Name | Type | Requis | Default | Description | Options |
+| ---- | ---- | ------ | ------- | ----------- | ------- |
+| color | string | Optionnel | - | couleur à utiliser | red, #ff0000, rgb(255,0,0), var(--color) |
+| from | integer | Optionnel | - | A partir de | number |
+| to | integer | Optionnel | - | jusqu'à | number |
+| icon | integer | Optionnel | - | Icon é utiliser | mdi:xxx |
 
 ## Examples
-
 
 #### Minimum
 
@@ -123,6 +129,30 @@ gauge:
   severity:
     - color: blue
     - color: yellow
+      from: 20
+      to: 22
+    - color: orange
+      from: 22
+      to: 24
+    - color: var(--red)
+      from: 24
+      to: 26
+    - color: purple
+      from: 26
+      to: 28
+    - color: purple
+      icon: mdi:xxx
+      from: 28
+      to: 50
+```
+
+#### Gauge options
+
+```yaml
+gauge:
+  severity:
+    - color: #0000FF
+    - color: rgb(0,255,00)
       from: 20
       to: 22
     - color: orange
