@@ -50,7 +50,7 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 | color | string | Optionnel | - | couleur à utiliser | red, #ff0000, rgb(255,0,0), var(--color) |
 | from | integer | Optionnel | - | A partir de | number |
 | to | integer | Optionnel | - | jusqu'à | number |
-| icon | integer | Optionnel | - | Icon é utiliser | mdi:xxx |
+| icon | integer | Optionnel | - | Icon à utiliser | mdi:xxx |
 
 ## Examples
 
