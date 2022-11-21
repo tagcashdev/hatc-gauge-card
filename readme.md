@@ -36,6 +36,12 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 | [title](https://github.com/tagcashdev/hatc-gauge-card/#title-options) | string/object | Optionnel | entity.attribute.friendly_name | Permet de changer le titre de la carte, [voir exemple](https://github.com/tagcashdev/hatc-gauge-card/#titre-simple) | false, '', hide, string, object [voir configuration](https://github.com/tagcashdev/hatc-gauge-card/#title-options) |
 | [gauge](https://github.com/tagcashdev/hatc-gauge-card/#gauge-options) | object | Optionnel | - | Configuration de la Jauge | - |
 
+#### Card Options
+| Name | Type | Requis | Default | Description | Options |
+| ---- | ---- | ------ | ------- | ----------- | ------- |
+| height | string | Optionnel | - | Hauteur de la carte | px |
+
+
 #### Title Options
 | Name | Type | Requis | Default | Description | Options |
 | ---- | ---- | ------ | ------- | ----------- | ------- |
