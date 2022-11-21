@@ -23,10 +23,8 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 - Contactez-moi pour proposer des idées
 
 ***
-<span style="color:red">
-*Merci de soutenir mon travail en téléchargeant cette carte personnalisé !
-Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez contribuer aux nombreux café que je consomme vous pouvez m'offrir 1 ct ou plus grâce à ce lien : https://www.paypal.me/tagcash*
-</span>
+<span style="color:red">*Merci de soutenir mon travail en téléchargeant cette carte personnalisé !*</span>
+Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez contribuer aux nombreux café que je consomme vous pouvez m'offrir 1 ct ou plus grâce à ce lien : https://www.paypal.me/tagcash
 ***
 
 #### Options
