@@ -4,7 +4,7 @@
 
 Se rendre sur HACS, puis dépôt personnalisé ajouter https://github.com/tagcashdev/hatc-gauge-card au Dépot et choisir catégorie Lovelace
 
-![Dépots personnalisé](./img/installation.png)
+![Dépots personnalisé](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/installation.png)
 
 Puis appuyer sur le bouton (+ Explorer et télécharger des dépôts), chercher HATC et installer.
 Enjoy !
@@ -75,7 +75,7 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 type: custom:hatc-gauge-card
 entity: sensor.temperature_moyenne_hall_d_entree
 ```
-![Minimum](./img/minimum.png)
+![Minimum](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/minimum.png)
 
 #### Default
 
@@ -117,7 +117,7 @@ gauge:
 ```yaml
 title: Titre de la carte
 ```
-![Titre Simple](./img/titre-simple.png)
+![Titre Simple](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/titre-simple.png)
 
 #### Titre options
 
@@ -130,7 +130,7 @@ title:
   icon-color: severity
   icon: severity
 ```
-![Titre options](./img/titre-options.png)
+![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/titre-options.png)
 
 #### Gauge options
 
@@ -162,7 +162,7 @@ gauge:
       from: 28
       to: 50
 ```
-![Gauge Options](./img/gauge-options.png)
+![Gauge Options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/gauge-options.png)
 
 #### Severity options
 
