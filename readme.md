@@ -32,9 +32,9 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 | ---- | ---- | ------ | ------- | ----------- | ------- |
 | type | string | **Obligatoire** | - | `custom:hatc-gauge-card` | - |
 | entity | string | **Obligatoire** | - | `sensor.processor_temperature` | - |
-| [card](#card-options) | object | Optionnel | null | Permet de changer la hauteur de la carte, [voir exemple](#default) | px |
-| [title](#title-options) | string/object | Optionnel | entity.attribute.friendly_name | Permet de changer le titre de la carte, [voir exemple](#titre-simple) | false, '', hide, string, object[voir configuration](#title-options) |
-| [gauge](#gauge-options) | object | Optionnel | - | Configuration de la Jauge | - |
+| [card](https://github.com/tagcashdev/hatc-gauge-card/readme.md#card-options) | object | Optionnel | null | Permet de changer la hauteur de la carte, [voir exemple](https://github.com/tagcashdev/hatc-gauge-card/readme.md#default) | px |
+| [title](https://github.com/tagcashdev/hatc-gauge-card/readme.md#title-options) | string/object | Optionnel | entity.attribute.friendly_name | Permet de changer le titre de la carte, [voir exemple](https://github.com/tagcashdev/hatc-gauge-card/readme.md#titre-simple) | false, '', hide, string, object [voir configuration](https://github.com/tagcashdev/hatc-gauge-card/readme.md#title-options) |
+| [gauge](https://github.com/tagcashdev/hatc-gauge-card/readme.md#gauge-options) | object | Optionnel | - | Configuration de la Jauge | - |
 
 #### Title Options
 | Name | Type | Requis | Default | Description | Options |
@@ -57,7 +57,7 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 | icon | string | Optionnel | entity.attributes.icon; | Icon du de la jauge, à noter que severity permet de changer l'icon automatiquement en fonction des icons choisi dans l'option severity | false, mdi:xxx, severity |
 | icon-color | string | Optionnel | white | Couleur de l'icon de la jauge, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
 | icon-size | string | Optionnel | 22px | Taille du texte de l'icon de la jauge | px, em |
-| [severity](#severity-options) | object | Optionnel | - | Configuration severity | - |
+| [severity](https://github.com/tagcashdev/hatc-gauge-card/readme.md#severity-options) | object | Optionnel | - | Configuration severity | - |
 
 #### Severity Options
 | Name | Type | Requis | Default | Description | Options |
