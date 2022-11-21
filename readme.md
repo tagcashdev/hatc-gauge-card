@@ -15,15 +15,19 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 
 ### Fonctionnalité futures
 - Choix des positions de l'Icon, État, Unité à l'intérieur de la jauge
+- Ajout double_tap_action & hold_action
+- Ajout d'un severity par defaut en fonction des entitées avec détection automatique (Garder la possibilité de changer la severity manuellement)
+- Pouvoir modifier la couleur et l’opacité de la gauge (proposé par Thomas Chauvin)
+- Pouvoir définir un statut grâce à un attribut de l'entité au lieu du statut de l'entité
 - ...
 
 ### Fonctionnalité futures (peut-être)
 - Posibilité de régler la luminosité, couleur d'une lumière grace à la gauge
 - ...
-- Contactez-moi pour proposer des idées
+- Contactez-moi pour proposer des idées (Mail, Facebook, etc.)
 
 ***
-<span style="color:red">*Merci de soutenir mon travail en téléchargeant cette carte personnalisé !*</span>
+Merci de soutenir mon travail en téléchargeant cette carte personnalisé !
 Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez contribuer aux nombreux café que je consomme vous pouvez m'offrir 1 ct ou plus grâce à ce lien : https://www.paypal.me/tagcash
 ***
 
@@ -79,7 +83,7 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 
 ```yaml
 type: custom:hatc-gauge-card
-entity: sensor‧temperature_moyenne_hall_d_entree
+entity: sensor.temperature_moyenne_hall_d_entree
 ```
 ![Minimum](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/minimum.png)
 
@@ -87,7 +91,7 @@ entity: sensor‧temperature_moyenne_hall_d_entree
 
 ```yaml
 type: custom:hatc-gauge-card
-entity: sensor‧temperature_moyenne_hall_d_entree
+entity: sensor.temperature_moyenne_hall_d_entree
 
 card:
   height: 150px
