@@ -49,7 +49,7 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 #### Title Options
 | Name | Type | Requis | Default | Description | Options |
 | ---- | ---- | ------ | ------- | ----------- | ------- |
-| name | string | Optionnel | - | Titre de la carte | - |
+| name | string | Optionnel | - | Titre de la carte | false, string |
 | text-align | string | Optionnel | left | Allignement du titre de la carte | left, center, right |
 | font-size | string | Optionnel | 22px | Taille du texte du titre de la carte | px, em |
 | text-color | string | Optionnel | var(--secondary-text-color) | Couleur du titre de la carte, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
@@ -141,6 +141,29 @@ title:
   icon: severity
 ```
 ![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/titre-options.png)
+
+
+#### Cacher le titre
+
+Solution n°1
+
+```yaml
+type: custom:hatc-gauge-card
+entity: sensor.temperature_moyenne_hall_d_entree
+title:
+  name: false
+  icon: false
+```
+
+Solution n°2 (à partir de la V0.5.3.2)
+
+```yaml
+type: custom:hatc-gauge-card
+entity: sensor.temperature_moyenne_hall_d_entree
+title: false
+```
+![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/cacher-titre.png)
+
 
 #### Gauge options
 

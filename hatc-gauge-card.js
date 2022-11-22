@@ -155,6 +155,9 @@ class HatcGaugeCard extends LitElement {
                 h['icon'] = (typeof hTitle.icon !== 'undefined') ? hTitle.icon : icon;
             }else{
                 h['name'] = hTitle;
+                if(hTitle === '' || hTitle === false || hTitle === 'hide'){
+                    h['icon'] = hTitle;
+                }
             }
 
             var heTitle = showTitleEntity ? hassEntity.attributes.friendly_name : '';
@@ -174,6 +177,7 @@ class HatcGaugeCard extends LitElement {
                 g['maxvalue'] = (typeof hGauge['max_value'] !== 'undefined') ? hGauge['max_value'] : '100';
 
                 g['state'] = (typeof hGauge['state'] !== 'undefined') ? hGauge['state'] : true;
+                console.log("heIcon", heIcon);
                 g['icon'] = (typeof hGauge['icon'] !== 'undefined') ? hGauge['icon'] : (heIcon !== '' && heIcon !== false && heIcon !== 'hide') ? heIcon : icon;
 
                 // Severity config
@@ -216,7 +220,7 @@ class HatcGaugeCard extends LitElement {
                 g['unitofmeasurement'] = heUnitOfMeasurement;
                 g['maxvalue'] = '100';
                 g['state'] = true;
-                g['icon'] = heIcon;
+                g['icon'] = (heIcon !== '' && heIcon !== false && heIcon !== 'hide') ? heIcon : icon;
 
                 textstateColor= 'white';
             }
@@ -243,7 +247,6 @@ class HatcGaugeCard extends LitElement {
             var hIconHTML = (hE.heIcon !== '' && hE.heIcon !== false && hE.heIcon !== 'hide') ? html`<ha-icon style="${h.fontsize} color:${h.iconcolor};" .icon="${hE.heIcon}"></ha-icon>` : '';
             var hNameHTML = (h.name !== '' && h.name !== false && h.name !== 'hide') ? html`<div style="${h.fontsize} color:${h.color};" class="name">${h.name}</div>` : '';
             var gStateHTML =  (g.state !== '' && g.state !== false && g.state !== 'hide') ? html`${hE.heState}${hE.heUnitOfMeasurement}` : '';
-            console.log(g.icon);
             var gIconHTML = (g.icon !== '' && g.icon !== false && g.icon !== 'hide') ? html`<ha-icon style="--mdc-icon-size: ${g.iconsize}; color:${g.iconcolor};" .icon="${g.icon}"></ha-icon>` : '';
 
             var percent = calcPercent(hE.heState, g.maxvalue);
@@ -315,7 +318,6 @@ class HatcGaugeCard extends LitElement {
     }
 
     _handlePopup(e) {
-        console.log('this.config.tap_action', this.config.tap_action);
         var tap_action = this.config.tap_action || {};
         if (this.config.entity) {
             if (typeof this.config.tap_action === 'undefined') {
@@ -330,8 +332,6 @@ class HatcGaugeCard extends LitElement {
                     }
                 }
             }
-
-            console.log("tap_action", tap_action);
             e.stopPropagation();
             handleClick(this, this.hass, tap_action, this.config.entity);
         }
@@ -339,7 +339,6 @@ class HatcGaugeCard extends LitElement {
 
     _handleEntities(e, entity) {
         var ent = entity || {};
-
         if (!ent['tap_action']) {
             ent = {
                 tap_action: {
@@ -348,7 +347,6 @@ class HatcGaugeCard extends LitElement {
                 }
             }
         }
-        
         e.stopPropagation();
         handleClick(this, this.hass, this.config.tap_action, false);
     }
