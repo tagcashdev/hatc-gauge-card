@@ -78,6 +78,21 @@ function handleClick(node, hass, config, entityId){
     }
 }
 
+function severity(severity_map){
+    console.log(severity_map);
+    var _severity = {};
+    severity_map.map(s => {
+        if(typeof s.form === 'undefined' && typeof s.to === 'undefined' && typeof s.color !== 'undefined'){
+            _severity['textstateColor'] = s.color;
+            if(typeof s.icon !== 'undefined'){
+                _severity['g']['icon'] = s.icon;
+            }
+        }
+    });
+
+    console.log("_severity", _severity);
+}
+
 class HatcGaugeCard extends LitElement {
     static get properties() {
         return {
@@ -162,7 +177,11 @@ class HatcGaugeCard extends LitElement {
 
             var heTitle = showTitleEntity ? hassEntity.attributes.friendly_name : '';
             var heUnitOfMeasurement = showUnitOfMeasurmentEntity ? hassEntity.entity_id.startsWith('light') && (typeof hassEntity.attributes.brightness == 'number') ? '%' : hassEntity.attributes.unit_of_measurement : '';
-            var heState = showStateEntity ? hassEntity.entity_id.startsWith('light') ? calcStatePercent(hassEntity.attributes.brightness, 254) : hassEntity.state : '';
+            
+            var heState = hassEntity.state; 
+            heState = hassEntity.entity_id.startsWith('light') ? calcStatePercent(hassEntity.attributes.brightness, 254) : heState;
+            heState = (typeof this.config.state !== 'undefined') ? this.hass.states[this.config.state].state : heState;
+
             var heIcon = showIconEntity ? (typeof h.icon !== 'undefined' ? h.icon : icon) : '';
 
             // Gauge config
@@ -182,20 +201,39 @@ class HatcGaugeCard extends LitElement {
 
                 // Severity config
                 if(typeof this.config.gauge.severity !== 'undefined'){
-                    this.config.gauge.severity.map(s => {
-                        if(typeof s.form === 'undefined' && typeof s.to === 'undefined' && typeof s.color !== 'undefined'){
-                            textstateColor = s.color;
-                            if(typeof s.icon !== 'undefined'){
-                                g.icon = s.icon;
+                    var gauge_severity = this.config.gauge.severity;
+
+                    if(typeof gauge_severity.entity_equals !== 'undefined'){
+                        console.log('traiter entity_equals pour envoyé à la fonction severity color,from,to,icon');
+                    }else{
+                        severity(gauge_severity);    
+                        gauge_severity.map(s => {
+                            if(typeof s.form === 'undefined' && typeof s.to === 'undefined' && typeof s.color !== 'undefined'){
+                                textstateColor = s.color;
+                                if(typeof s.icon !== 'undefined'){
+                                    g.icon = s.icon;
+                                }
                             }
-                        }
-                        if(parseFloat(heState) >= s.from && parseFloat(heState) <= s.to){
-                            textstateColor = s.color;
-                            if(typeof s.icon !== 'undefined'){
-                                g.icon = s.icon;
+
+                            var s_entity_equals = false;
+                            if(typeof s.entity_equals !== 'undefined'){
+                                if(hassEntity.state === s.entity_equals){
+                                    s_entity_equals = true;
+                                }
+                            }else{
+                                s_entity_equals = true;
                             }
-                        }
-                    });
+
+                            if(parseFloat(heState) >= s.from && parseFloat(heState) <= s.to && s_entity_equals){
+                                textstateColor = s.color;
+                                if(typeof s.icon !== 'undefined'){
+                                    g.icon = s.icon;
+                                }
+                            }
+                        });
+                    }
+                    
+                    
                     if(g['textstatecolor'] == "severity" || g['textstatecolor'] == ""){
                         g['textstatecolor'] = textstateColor;
                     }
