@@ -244,8 +244,11 @@ class HatcGaugeCard extends LitElement {
                 "heTextStateColor" : heTextStateColor,
             }
 
+
+
             var hIconHTML = (hE.heIcon !== '' && hE.heIcon !== false && hE.heIcon !== 'hide') ? html`<ha-icon style="${h.fontsize} color:${h.iconcolor};" .icon="${hE.heIcon}"></ha-icon>` : '';
             var hNameHTML = (h.name !== '' && h.name !== false && h.name !== 'hide') ? html`<div style="${h.fontsize} color:${h.color};" class="name">${h.name}</div>` : '';
+            var hEntitiesHeight = (h.name !== '' && h.name !== false && h.name !== 'hide') ? 'calc(100% - 40px)' : '100%';
             var gStateHTML =  (g.state !== '' && g.state !== false && g.state !== 'hide') ? html`${hE.heState}${hE.heUnitOfMeasurement}` : '';
             var gIconHTML = (g.icon !== '' && g.icon !== false && g.icon !== 'hide') ? html`<ha-icon style="--mdc-icon-size: ${g.iconsize}; color:${g.iconcolor};" .icon="${g.icon}"></ha-icon>` : '';
 
@@ -274,7 +277,7 @@ class HatcGaugeCard extends LitElement {
                                 ${hNameHTML}
                             </div>
 
-                            <div class="entities">
+                            <div class="entities" style="height: ${hEntitiesHeight};">
                                 <div class="outer">
                                     <div class="inner" style="color: ${hE.heTextStateColor}; font-size: ${g.fontsize};">
                                         ${gIconHTML}
@@ -380,7 +383,6 @@ class HatcGaugeCard extends LitElement {
             }
             .HatcGaugeCard .box .entities{
                 position: relative;
-                height: calc(100% - 40px);
             }
             .HatcGaugeCard .box .entities .outer .inner{
                 display: flex;
