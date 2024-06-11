@@ -97,9 +97,6 @@ class HatcGaugeCard extends LitElement {
     static getStubConfig() {
         return { 
             entity: "sun.sun",
-            gauge: {
-                digits: 1  // Default to 1 decimal place
-            }
         };
     }
 
@@ -181,7 +178,7 @@ class HatcGaugeCard extends LitElement {
             var g = {}; var hGauge = (typeof this.config.gauge !== 'undefined') ? this.config.gauge : '';
             if(isObject(hGauge)){
                 g['textstatecolor'] = (typeof hGauge['text-color'] !== 'undefined') ? hGauge['text-color'] : '';
-                g['digits'] = (typeof hGauge['digits'] !== 'undefined') ? hGauge['digits'] : '';
+                g['digits'] = (typeof hGauge['digits'] !== 'undefined') ? hGauge['digits'] : '0';
                 g['iconcolor'] = (typeof hGauge['icon-color'] !== 'undefined') ? hGauge['icon-color'] : g.textstateColor;
                 g['fontsize'] = (typeof hGauge['font-size'] !== 'undefined') ? hGauge['font-size'] : '22px';
                 g['iconsize'] = (typeof hGauge['icon-size'] !== 'undefined') ? hGauge['icon-size'] : g.fontsize;
@@ -230,6 +227,12 @@ class HatcGaugeCard extends LitElement {
                     textstateColor= 'white';
                 }
             }else{
+                var heState = showStateEntity ? 
+                    hassEntity.entity_id.startsWith('light') ? 
+                        calcStatePercent(hassEntity.attributes.brightness, 254) : 
+                        hassEntity.state : 
+                '';
+
                 g['textstatecolor'] = '';
                 g['iconcolor'] = '';
                 g['fontsize'] = '22px';
