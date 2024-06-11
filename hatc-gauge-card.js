@@ -169,6 +169,7 @@ class HatcGaugeCard extends LitElement {
             var g = {}; var hGauge = (typeof this.config.gauge !== 'undefined') ? this.config.gauge : '';
             if(isObject(hGauge)){
                 g['textstatecolor'] = (typeof hGauge['text-color'] !== 'undefined') ? hGauge['text-color'] : '';
+                g['digits'] = (typeof hGauge['digits'] !== 'undefined') ? hGauge['digits'] : '';
                 g['iconcolor'] = (typeof hGauge['icon-color'] !== 'undefined') ? hGauge['icon-color'] : g.textstateColor;
                 g['fontsize'] = (typeof hGauge['font-size'] !== 'undefined') ? hGauge['font-size'] : '22px';
                 g['iconsize'] = (typeof hGauge['icon-size'] !== 'undefined') ? hGauge['icon-size'] : g.fontsize;
@@ -214,6 +215,7 @@ class HatcGaugeCard extends LitElement {
             }else{
                 g['textstatecolor'] = '';
                 g['iconcolor'] = '';
+                g['digits'] = '1';
                 g['fontsize'] = '22px';
                 g['iconsize'] = g.fontsize;
                 g['friendlyname'] = heTitle;
@@ -237,7 +239,7 @@ class HatcGaugeCard extends LitElement {
 
             var hE = {
                 "heTitle": (g.friendlyname !== '' && g.friendlyname !== false && g.friendlyname !== 'hide') ? g.friendlyname : '',
-                "heState": heState,
+                "heState": heState.toFixed(g.digits),
                 "heUnitOfMeasurement": (g.unitofmeasurement !== '' && g.unitofmeasurement !== false && g.unitofmeasurement !== 'hide') ? g.unitofmeasurement : '',
                 "heIcon": heIcon,
                 "hePathStrokeColor" : hePathStrokeColor,
