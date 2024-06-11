@@ -68,6 +68,8 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 | icon | string | Optionnel | entity‧attributes‧icon; | Icon de la jauge, à noter que severity permet de changer l'icon automatiquement en fonction des icons choisi dans l'option severity | false, mdi:xxx, severity |
 | icon-color | string | Optionnel | white | Couleur de l'icon de la jauge, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
 | icon-size | string | Optionnel | 22px | Taille du texte de l'icon de la jauge | px, em |
+| [digits](https://github.com/tagcashdev/hatc-gauge-card/#gestion-des-decimales) | integer | Optionnel | 0 | nombre de décimale après la virgule | - |
+| [direction](https://github.com/tagcashdev/hatc-gauge-card/#direction) | string | Optionnel | row | Affichage vertical / horizontal | row, column, row-reverse, column-reverse |
 | [severity](https://github.com/tagcashdev/hatc-gauge-card/#severity-options) | object | Optionnel | - | Configuration severity | - |
 
 #### Severity Options
@@ -198,14 +200,35 @@ gauge:
 ```
 ![Gauge Options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/gauge-options.png)
 
-Gestion des décimales (à partir de la V0.5.3.4)
+#### Gestion des décimales 
+Permet de gérer le nombre décimal à afficher (à partir de la V0.5.3.6)
 
 ```yaml
 type: custom:hatc-gauge-card
 entity: sensor.entree_grp_air_temperature
-digits: 3
+gauge:
+  digits: 3
 ```
 ![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/digits-3.png)
+
+#### Direction
+Afficher horizontalement ou verticalement (à partir de la V0.5.4.0)
+
+```yaml
+type: custom:hatc-gauge-card
+entity: sensor.entree_grp_air_temperature
+gauge: 
+  direction: column
+```
+![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/direction-column.png)
+
+```yaml
+type: custom:hatc-gauge-card
+entity: sensor.entree_grp_air_temperature
+gauge: 
+  direction: column-reverse
+```
+![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/direction-column-reverse.png)
 
 #### Severity options
 

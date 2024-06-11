@@ -178,6 +178,7 @@ class HatcGaugeCard extends LitElement {
             var g = {}; var hGauge = (typeof this.config.gauge !== 'undefined') ? this.config.gauge : '';
             if(isObject(hGauge)){
                 g['textstatecolor'] = (typeof hGauge['text-color'] !== 'undefined') ? hGauge['text-color'] : '';
+                g['flexdirection'] = (typeof hGauge['direction'] !== 'undefined') ? hGauge['direction'] : 'row';
                 g['digits'] = (typeof hGauge['digits'] !== 'undefined') ? hGauge['digits'] : '0';
                 g['iconcolor'] = (typeof hGauge['icon-color'] !== 'undefined') ? hGauge['icon-color'] : g.textstateColor;
                 g['fontsize'] = (typeof hGauge['font-size'] !== 'undefined') ? hGauge['font-size'] : '22px';
@@ -234,6 +235,7 @@ class HatcGaugeCard extends LitElement {
                 '';
 
                 g['textstatecolor'] = '';
+                g['flexdirection'] = 'row';
                 g['iconcolor'] = '';
                 g['fontsize'] = '22px';
                 g['iconsize'] = g.fontsize;
@@ -263,6 +265,7 @@ class HatcGaugeCard extends LitElement {
                 "heIcon": heIcon,
                 "hePathStrokeColor" : hePathStrokeColor,
                 "heTextStateColor" : heTextStateColor,
+                "heFlexdirection" : 'flex-direction:'+g.flexdirection+';'
             }
 
 
@@ -300,7 +303,7 @@ class HatcGaugeCard extends LitElement {
 
                             <div class="entities" style="height: ${hEntitiesHeight};">
                                 <div class="outer">
-                                    <div class="inner" style="color: ${hE.heTextStateColor}; font-size: ${g.fontsize};">
+                                    <div class="inner" style="color: ${hE.heTextStateColor}; font-size: ${g.fontsize}; ${hE.heFlexdirection}">
                                         ${gIconHTML}
                                         <div class="datas">
                                             ${gStateHTML}
