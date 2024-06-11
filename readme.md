@@ -15,7 +15,6 @@ Carte personnalisée pour lovelace qui peut être utilisée comme carte ou élé
 
 ### Fonctionnalité futures
 - Pouvoir modifier la couleur et l’opacité de la gauge (proposé par Thomas Chauvin)
-- Pouvoir gérer le nombre de décimals (proposé par Vincent Van Vreckem)
 - Choix des positions de l'Icon, État, Unité à l'intérieur de la jauge
 - Ajout double_tap_action & hold_action
 - Ajout d'un severity par defaut en fonction des entitées avec détection automatique (Garder la possibilité de changer la severity manuellement)
