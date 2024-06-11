@@ -65,7 +65,7 @@ Si vous aimez mon travail likez, abonnez-vous au repo :) Et si vous souhaitez co
 | text-color | string | Optionnel | black | Permet de changer la couleur du text à l'intérieur du cercle de la jauge, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
 | font-size | string | Optionnel | 22px | Taille du texte de l'icon & l'état de la jauge | px, em |
 | unit_of_measurement | string | Optionnel | hassEntity‧attributes‧unit_of_measurement | Permet de modifier la valeur de l'unité ou de cacher l'unité dans la jauge | false, string |
-| icon | string | Optionnel | entity‧attributes‧icon; | Icon du de la jauge, à noter que severity permet de changer l'icon automatiquement en fonction des icons choisi dans l'option severity | false, mdi:xxx, severity |
+| icon | string | Optionnel | entity‧attributes‧icon; | Icon de la jauge, à noter que severity permet de changer l'icon automatiquement en fonction des icons choisi dans l'option severity | false, mdi:xxx, severity |
 | icon-color | string | Optionnel | white | Couleur de l'icon de la jauge, à noter que severity permet de changer la couleur du texte automatiquement en fonction des couleurs choisi dans l'option severity | severity, red, #ff0000, rgb(255,0,0), var(--color) |
 | icon-size | string | Optionnel | 22px | Taille du texte de l'icon de la jauge | px, em |
 | [severity](https://github.com/tagcashdev/hatc-gauge-card/#severity-options) | object | Optionnel | - | Configuration severity | - |
@@ -197,6 +197,15 @@ gauge:
       to: 50
 ```
 ![Gauge Options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/gauge-options.png)
+
+Gestion des décimales (à partir de la V0.5.3.4)
+
+```yaml
+type: custom:hatc-gauge-card
+entity: sensor.entree_grp_air_temperature
+digits: 3
+```
+![Titre options](https://github.com/tagcashdev/hatc-gauge-card/blob/main/img/digits-3.png)
 
 #### Severity options
 
