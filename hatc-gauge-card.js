@@ -7,6 +7,10 @@ function isObject(val) {
     return val instanceof Object; 
 }
 
+function formatStateValue(value, digits) {
+    return parseFloat(value).toFixed(digits);
+}
+
 function calcPercent(sValue, sMax){
     var result = sValue / sMax * 100;
     result = Math.trunc(result);
@@ -91,7 +95,12 @@ class HatcGaugeCard extends LitElement {
     }
 
     static getStubConfig() {
-        return { entity: "sun.sun" }
+        return { 
+            entity: "sun.sun",
+            gauge: {
+                digits: 1  // Default to 1 decimal place
+            }
+        };
     }
 
     // Whenever the state changes, a new `hass` object is set. Use this to
@@ -161,8 +170,11 @@ class HatcGaugeCard extends LitElement {
             }
 
             var heTitle = showTitleEntity ? hassEntity.attributes.friendly_name : '';
-            var heUnitOfMeasurement = showUnitOfMeasurmentEntity ? hassEntity.entity_id.startsWith('light') && (typeof hassEntity.attributes.brightness == 'number') ? '%' : hassEntity.attributes.unit_of_measurement : '';
-            var heState = showStateEntity ? hassEntity.entity_id.startsWith('light') ? calcStatePercent(hassEntity.attributes.brightness, 254) : hassEntity.state : '';
+            var heUnitOfMeasurement = showUnitOfMeasurmentEntity ? 
+                    hassEntity.entity_id.startsWith('light') && (typeof hassEntity.attributes.brightness == 'number') ? 
+                        '%' : 
+                        hassEntity.attributes.unit_of_measurement : 
+                '';
             var heIcon = showIconEntity ? (typeof h.icon !== 'undefined' ? h.icon : icon) : '';
 
             // Gauge config
@@ -178,8 +190,13 @@ class HatcGaugeCard extends LitElement {
                 g['maxvalue'] = (typeof hGauge['max_value'] !== 'undefined') ? hGauge['max_value'] : '100';
 
                 g['state'] = (typeof hGauge['state'] !== 'undefined') ? hGauge['state'] : true;
-                console.log("heIcon", heIcon);
                 g['icon'] = (typeof hGauge['icon'] !== 'undefined') ? hGauge['icon'] : (heIcon !== '' && heIcon !== false && heIcon !== 'hide') ? heIcon : icon;
+
+                var heState = showStateEntity ? 
+                    hassEntity.entity_id.startsWith('light') ? 
+                        calcStatePercent(hassEntity.attributes.brightness, 254) : 
+                        formatStateValue(hassEntity.state, g.digits) : 
+                '';
 
                 // Severity config
                 if(typeof this.config.gauge.severity !== 'undefined'){
@@ -215,7 +232,6 @@ class HatcGaugeCard extends LitElement {
             }else{
                 g['textstatecolor'] = '';
                 g['iconcolor'] = '';
-                g['digits'] = '1';
                 g['fontsize'] = '22px';
                 g['iconsize'] = g.fontsize;
                 g['friendlyname'] = heTitle;
@@ -239,7 +255,7 @@ class HatcGaugeCard extends LitElement {
 
             var hE = {
                 "heTitle": (g.friendlyname !== '' && g.friendlyname !== false && g.friendlyname !== 'hide') ? g.friendlyname : '',
-                "heState": heState.toFixed(g.digits),
+                "heState": heState,
                 "heUnitOfMeasurement": (g.unitofmeasurement !== '' && g.unitofmeasurement !== false && g.unitofmeasurement !== 'hide') ? g.unitofmeasurement : '',
                 "heIcon": heIcon,
                 "hePathStrokeColor" : hePathStrokeColor,
